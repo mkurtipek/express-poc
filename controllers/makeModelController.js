@@ -44,14 +44,19 @@ exports.search = function (req, res) {
     let makemodel = req.body.makemodel;
     let make = makemodel.split("###")[0];
     let model = makemodel.split("###")[1];
-    let startyear = req.body.startyear;
-    let endyear = req.body.endyear;
+    let startyear = req.body.year;
+    let endyear = req.body.year;
     if (req.body.grade != '') {
         grade1 = req.body.grade - 1;
         grade2 = req.body.grade;
     }
-    let startmilage = req.body.startmilage;
-    let endmilage = req.body.endmilage;
+
+    let startmilage = '';
+    let endmilage = '';
+    if (req.body.milage != '') {
+        startmilage = parseInt(req.body.milage) - 2000;
+        endmilage = parseInt(req.body.milage) + 2000;
+    }
 
     console.log(req.body);
 

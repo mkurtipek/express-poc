@@ -10,20 +10,14 @@ block content
             each mm in makemodels
                 each mo in mm.models
                     option(value=mm.make+'###'+mo class=mm.make) #{mm.make} - #{mo}
-        p Start Year: 
-            input(type='text', name='startyear')
-        
-        p End Year: 
-            input(type='text', name='endyear')
+        p Year: 
+            input(type='text', name='year')
                     
         p Condition: 
             input(type='text', name='grade')
 
-        p Start Milage: 
-            input(type='text', name='startmilage')
-
-        p End Milage: 
-            input(type='text', name='endmilage')
+        p Milage (+-2K): 
+            input(type='text', name='milage')
 
         p
             button.btn.btn-primary(type='submit') Submit
