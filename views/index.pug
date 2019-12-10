@@ -1,0 +1,61 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to #{title}
+
+    form(method='POST' action='/')
+        p Make/Model: 
+          select(name='makemodel')
+            each mm in makemodels
+                each mo in mm.models
+                    option(value=mm.make+'###'+mo class=mm.make) #{mm.make} - #{mo}
+        p Start Year: 
+            input(type='text', name='startyear')
+        
+        p End Year: 
+            input(type='text', name='endyear')
+                    
+        p Condition: 
+            input(type='text', name='grade')
+
+        p Start Milage: 
+            input(type='text', name='startmilage')
+
+        p End Milage: 
+            input(type='text', name='endmilage')
+
+        p
+            button.btn.btn-primary(type='submit') Submit
+    
+    table
+        tr
+            th Location
+            th Median
+        tbody
+            each rec in medianresults
+                tr
+                    td #{rec.Location}
+                    td #{rec.Median}
+    
+    table
+        tr
+            th Location
+            th Make
+            th Model
+            th Year
+            th Grade
+            th Odometer
+            th Price
+        tbody
+            each location in searchresults
+                each rec in location
+                    tr
+                        td #{rec.Location}
+                        td #{rec.Make}
+                        td #{rec.Model}
+                        td #{rec.Year}
+                        td #{rec.Grade}
+                        td #{rec.Odometer}
+                        td #{rec.Price}
+            
